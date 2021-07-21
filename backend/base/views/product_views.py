@@ -1,14 +1,14 @@
 from django.shortcuts import render
-from base.models import Product,Review
+
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework.response import Response
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+from base.models import Product, Review
 from base.serializers import ProductSerializer
+
 from rest_framework import status
-
-
-
 
 
 @api_view(['GET'])
@@ -22,6 +22,7 @@ def getProducts(request):
 
     page = request.query_params.get('page')
     paginator = Paginator(products, 8)
+
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
@@ -37,6 +38,7 @@ def getProducts(request):
     serializer = ProductSerializer(products, many=True)
     return Response({'products': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
+
 @api_view(['GET'])
 def getTopProducts(request):
     products = Product.objects.filter(rating__gte=4).order_by('-rating')[0:5]
@@ -49,6 +51,7 @@ def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
+
 
 @api_view(['POST'])
 @permission_classes([IsAdminUser])
@@ -68,6 +71,7 @@ def createProduct(request):
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
+
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
 def updateProduct(request, pk):
@@ -86,6 +90,7 @@ def updateProduct(request, pk):
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
+
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
 def deleteProduct(request, pk):
@@ -93,7 +98,7 @@ def deleteProduct(request, pk):
     product.delete()
     return Response('Producted Deleted')
 
-     
+
 @api_view(['POST'])
 def uploadImage(request):
     data = request.data
@@ -105,6 +110,7 @@ def uploadImage(request):
     product.save()
 
     return Response('Image was uploaded')
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
