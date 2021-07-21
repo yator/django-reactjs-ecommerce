@@ -1,7 +1,5 @@
-from base.products import products
 from django.shortcuts import render
 from base.models import Product
-from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from base.serializers import ProductSerializer
