@@ -4,18 +4,29 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   productListReducer,
   productDetailsReducer,
+  productCreateReducer,
+  productDeleteReducer,
+  productUpdateReducer,
+  productReviewCreateReducer,
+  productTopRatedReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { userLoginReducer,userRegisterReducer,userDetailsReducer,userUpdateProfileReducer,userListReducer,userDeleteReducer,userUpdateReducer} from "./reducers/userReducers"
-import { orderCreateReducer,orderDetailsReducer,orderPayReducer,orderListMyReducer } from './reducers/orderReducers'
+import { orderCreateReducer,orderDetailsReducer,orderPayReducer,orderListMyReducer,orderDeliverReducer,orderListReducer } from './reducers/orderReducers'
 
 
 
 const reducer = combineReducers({
   productList: productListReducer,
-  productDetails: productDetailsReducer,
+  productDetails:productDetailsReducer,
+  productDelete:productDeleteReducer,
+  productCreate:productCreateReducer,
+  productUpdate:productUpdateReducer,
+  productReviewCreate:productReviewCreateReducer,
+  productTopRated:productTopRatedReducer,
+
   cart: cartReducer,
-  
+
   userLogin:userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails:userDetailsReducer,
@@ -28,6 +39,8 @@ const reducer = combineReducers({
   orderDetails:orderDetailsReducer,
   orderPay:orderPayReducer,
   orderListMy:orderListMyReducer,
+  orderList:orderListReducer,
+  orderDeliver:orderDeliverReducer,
  
 
 });
