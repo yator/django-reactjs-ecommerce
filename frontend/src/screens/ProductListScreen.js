@@ -88,7 +88,7 @@ function ProductListScreen({ history, match }) {
                                         <th>PRICE</th>
                                         <th>CATEGORY</th>
                                         <th>BRAND</th>
-                                        <th></th>
+                                        <th>ACTION</th>
                                     </tr>
                                 </thead>
 

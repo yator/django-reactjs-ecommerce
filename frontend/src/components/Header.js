@@ -21,7 +21,7 @@ function Header() {
             <Navbar bg="info" variant="secondary" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
-                        <Navbar.Brand>CiftecShop</Navbar.Brand>
+                        <Navbar.Brand>smarthomeautoea</Navbar.Brand>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -44,7 +44,7 @@ function Header() {
                                 </NavDropdown>
                             ) : (
                                     <LinkContainer to='/login'>
-                                        <Nav.Link><i className="fas fa-user"></i>Login</Nav.Link>
+                                        <Nav.Link><i className="fas fa-user  fa-right"></i>Login</Nav.Link>
                                     </LinkContainer>
                                 )}
 
